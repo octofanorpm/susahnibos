@@ -3,14 +3,22 @@ import { useState } from "react";
 import "./style.css";
 import CloseIcon from "../../../image/icon-close.png";
 import * as React from "react";
+import { Button } from "react-bootstrap";
+import { Navigate } from "react-router-dom";
 
 const Navbar = () => {
   const [sidebar, setSidebar] = useState(false);
+  
+  const handleLogOut = () => {
+    const { cookies } = this.props;
+    cookies.remove('uidTokenBinarApp') 
+  }
   const showSidebar = () => {
     setSidebar((prev) => !prev);
     console.log(sidebar);
   };
   const navigate = useNavigate();
+  if (!document.cookie) return <Navigate to={'/signin'} />
   return (
     <>
       <div className="container-navbar">
@@ -72,6 +80,13 @@ const Navbar = () => {
                       FAQ
                     </a>
                   </li>
+                  <li>
+                    <Button onClick={handleLogOut}
+                      className="btn btn-primary btn-block w-100"
+                    >
+                      Log Out
+                    </Button>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -100,6 +115,13 @@ const Navbar = () => {
                 <a className="nav-link" href="/#faqSection">
                   FAQ
                 </a>
+              </li>
+              <li>
+                <Button onClick={handleLogOut}
+                  className="btn btn-primary btn-block w-100"
+                >
+                  Log Out
+                </Button>
               </li>
             </ul>
           </div>

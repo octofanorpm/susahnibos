@@ -2,7 +2,8 @@ import React, { useContext } from 'react'
 import Button from "react-bootstrap/Button";
 import { AuthContext } from '../../../context/auth';
 import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import signcust from "../../../../image/signcust.png"
 
 const FormView = () => {
   const [postAuth, data] = useContext(AuthContext);
@@ -15,7 +16,7 @@ const FormView = () => {
     console.log("Login successful!");
   };
 
-  // if (dataAuth.access_token)
+  if (document.cookie) return <Navigate to={'/'} />
 
   return (
     <div className="d-flex w-100">
@@ -47,7 +48,9 @@ const FormView = () => {
           </p>
         </Form>
       </div>
-      <div className="bg-primary col-6"></div>
+      <div className="col-8 bg-primary" >
+      <img className="max-width-100" src={signcust} />
+        </div>
     </div>
   );
 };
