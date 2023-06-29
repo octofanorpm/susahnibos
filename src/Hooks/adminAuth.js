@@ -3,14 +3,15 @@ import { DOMAIN_API } from '../Constants'
 import fetchAPI from '../API'
 
 
-const useAuth = () => {
+const adminAuth = () => {
 
   const [dataAuth, setAuth] = useState({})
   const [loading, setLoading] = useState(false)
 
+
   const postAuth = (param) => {
     setLoading(true)
-    const apiURL = `${DOMAIN_API}/customer/auth/login`
+    const apiURL = `${DOMAIN_API}/admin/auth/login`
     fetchAPI(param, apiURL).then((result) => {
       setAuth(result)
       setLoading(false)
@@ -34,4 +35,4 @@ const useAuth = () => {
   ]
 }
 
-export default useAuth
+export default adminAuth
