@@ -12,7 +12,7 @@ const FormView = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const { email, password } = e.target.elements;
-    postAuth({ email: email.value, password: password.value });
+    postAuth({ email: email.value, password: password.value }, "User");
     console.log("Login successful!");
   };
 

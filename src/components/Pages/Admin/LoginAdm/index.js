@@ -3,20 +3,23 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link, Navigate } from "react-router-dom";
 import adminlog from "../../../../image/adminlog.png";
-import { AuthAdminContext } from "../../../context/auth/adminAuth";
+// import { AuthAdminContext } from "../../../context/auth/adminAuth";
+import { AuthContext } from "../../../context/auth";
 
 const LoginAdm = () => {
-    const [postAuth, data] = useContext(AuthAdminContext);
+    const [postAuth, data] = useContext(AuthContext);
     const { loading } = data;
 
     const handleOnSubmit = (e) => {
       e.preventDefault();
       const { email, password } = e.target.elements;
-      postAuth({ email: email.value, password: password.value });
+      postAuth({ email: email.value, password: password.value }, "Admin");
       console.log("Login successful!");
     };
 
-    if (document.cookie !== "") return <Navigate to={'/'} />
+    const role = localStorage.getItem('role')
+    
+    if (document.cookie !== "" && role == "Admin") return <Navigate to={'/payments'} />
 
   return (
     <div className="d-flex">

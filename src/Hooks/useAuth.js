@@ -8,9 +8,18 @@ const useAuth = () => {
   const [dataAuth, setAuth] = useState({})
   const [loading, setLoading] = useState(false)
 
-  const postAuth = (param) => {
+  const postAuth = (param, role) => {
     setLoading(true)
-    const apiURL = `${DOMAIN_API}/customer/auth/login`
+    console.log(role)
+    var apiURL = ""
+
+    if (role == "Admin") {
+      apiURL = `${DOMAIN_API}/admin/auth/login`
+    }
+    else if (role == "User") {
+      apiURL = `${DOMAIN_API}/customer/auth/login`
+    }
+    
     fetchAPI(param, apiURL).then((result) => {
       setAuth(result)
       setLoading(false)
