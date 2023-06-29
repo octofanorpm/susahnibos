@@ -3,7 +3,6 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link, Navigate } from "react-router-dom";
 import adminlog from "../../../../image/adminlog.png";
-// import { AuthAdminContext } from "../../../context/auth/adminAuth";
 import { AuthContext } from "../../../context/auth";
 
 const LoginAdm = () => {

@@ -16,7 +16,7 @@ const useAuth = () => {
     if (role == "Admin") {
       apiURL = `${DOMAIN_API}/admin/auth/login`
     }
-    else if (role == "User") {
+    else if (role == "Customer") {
       apiURL = `${DOMAIN_API}/customer/auth/login`
     }
     
