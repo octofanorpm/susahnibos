@@ -7,7 +7,6 @@ import CarDetails from "./components/Pages/CarDetailsPage";
 import PaymentPage from "./components/Pages/PaymentPage";
 import SignIn from "./components/Pages/Customer/signIn"
 import LogAdm from "./components/Pages/Admin";
-import FormView from "./components/Pages/Customer/Login";
 
 const App = () => {
   return (
@@ -18,8 +17,7 @@ const App = () => {
         <Route path="/car-result" element={<CarResult />} />
         <Route path="/car-details" element={<CarDetails />} />
         <Route path="/payments" element={<PaymentPage />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/form" element={<FormView />} />
+        <Route path="/signin" element={<SignIn />} />cd 
         <Route path="/admin" element={<LogAdm />} />
         <Route />
       </Routes>
