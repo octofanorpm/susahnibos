@@ -16,7 +16,7 @@ const FormView = () => {
     console.log("Login successful!");
   };
 
-  if (document.cookie) return <Navigate to={'/'} />
+  if (document.cookie !== "") return <Navigate to={'/'} />
 
   return (
     <div className="d-flex w-100">
