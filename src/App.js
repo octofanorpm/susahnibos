@@ -5,8 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CarResult from "./components/Pages/ResultPage";
 import CarDetails from "./components/Pages/CarDetailsPage";
 import PaymentPage from "./components/Pages/PaymentPage";
-import SignIn from "./components/Pages/Customer/signIn"
-import LogAdm from "./components/Pages/Admin";
+import SignIn from "./components/Pages/Customer/Login"
+import LogAdm from "./components/Pages/Admin/LoginAdm/index";
 
 const App = () => {
   return (

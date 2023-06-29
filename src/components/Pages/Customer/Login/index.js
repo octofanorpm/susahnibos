@@ -1,51 +1,28 @@
-import React, { useState } from "react";
+import React, { useContext } from 'react'
 import Button from "react-bootstrap/Button";
+import { AuthContext } from '../../../context/auth';
 import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
-import signcust from "../../../../image/signcust.png";
-import axios from "axios";
-import Cookies from "js-cookie";
+import { Link, Navigate } from "react-router-dom";
+import signcust from "../../../../image/signcust.png"
 
 const FormView = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [postAuth, data] = useContext(AuthContext);
+  const { loading } = data;
 
-  const handleSubmit = async (e) => {
+  const handleOnSubmit = (e) => {
     e.preventDefault();
-
-    try {
-      setLoading(true);
-      setError("");
-
-      // Make the API call to the Swagger API
-      const response = await axios.post("<https://bootcamp-rent-cars.herokuapp.com/customer/auth/login>", {
-        email,
-        password,
-      });
-
-      // Handle the response from the API
-      if (response.status === 200) {
-        const { access_token } = response.data;
-
-        // Save the access token to a cookie
-        Cookies.set("access_token", access_token);
-
-        // Successful login, perform any necessary actions
-      } else {
-        // Handle other response statuses if needed
-      }
-    } catch (error) {
-      setError("An error occurred. Please try again.");
-    } finally {
-      setLoading(false);
-    }
+    const { email, password } = e.target.elements;
+    postAuth({ email: email.value, password: password.value }, "Customer");
+    console.log("Login successful!");
+  
   };
+  const role = localStorage.getItem('role')
+  if (document.cookie !== "" && role == "Customer") return <Navigate to={'/'} />
+
   return (
     <div className="d-flex w-100">
       <div className="d-flex justify-content-center align-items-center vh-100 col-6">
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleOnSubmit}>
           <h3>Welcome Back!</h3>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
@@ -53,8 +30,6 @@ const FormView = () => {
               name="email"
               type="email"
               placeholder="Enter email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
             />
             <Form.Text className="text-muted">
               We&#39;ll never share your email with anyone else.
@@ -67,23 +42,20 @@ const FormView = () => {
               name="password"
               type="password"
               placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
           <Button className="btn btn-primary btn-block w-100" type="submit">
             {loading ? "Loading . . ." : "Sign In"}
           </Button>
-          {error && <p className="text-danger">{error}</p>}
           <p className="text-center">
             Don’t have an account?
             <Link to="/Admin"> Sign Up for free</Link>
           </p>
         </Form>
       </div>
-      <div className="col-6 bg-primary">
-        <img className="w-100 vh-120" src={signcust} alt="Sign Up" />
-      </div>
+      <div className="col-8 bg-primary" >
+      <img className="max-width-100" src={signcust} />
+        </div>
     </div>
   );
 };
