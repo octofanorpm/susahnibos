@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CarResult from "./components/Pages/ResultPage";
 import CarDetails from "./components/Pages/CarDetailsPage";
 import PaymentPage from "./components/Pages/PaymentPage";
-import SignIn from "./components/Pages/Customer/signIn"
+import SignIn from "./components/Pages/Customer/Login"
 import LogAdm from "./components/Pages/Admin";
 import FormView from "./components/Pages/Customer/Login";
 
