@@ -46,7 +46,7 @@ const LoginAdm = () => {
           </Button>
           <p className="text-center">
             Don’t have an account?
-            <Link to="/Admin"> Sign Up for free</Link>
+            <Link to="/signin"> Sign Up for free</Link>
           </p>
         </Form>
       </div>
