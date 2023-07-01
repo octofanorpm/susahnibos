@@ -16,7 +16,9 @@ const FormView = () => {
     console.log("Login successful!");
   };
 
-  if (document.cookie !== "") return <Navigate to={'/'} />
+  const role = localStorage.getItem('role')
+
+  if (document.cookie !== "" && role === "User") return <Navigate to={'/'} />
 
   return (
     <div className="d-flex w-100">

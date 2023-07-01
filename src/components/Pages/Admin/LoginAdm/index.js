@@ -19,7 +19,7 @@ const LoginAdm = () => {
 
     const role = localStorage.getItem('role')
     
-    if (document.cookie !== "" && role == "Admin") return <Navigate to={'/payments'} />
+    if (document.cookie !== "" && role === "Admin") return <Navigate to={'/payments'} />
 
   return (
     <div className="d-flex">

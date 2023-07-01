@@ -14,7 +14,13 @@ const LandingPage = () => {
   // buttonContainer.innerHTML = `
   //     <button class="sewa-button">Mulai Sewa Mobil</button>
   // `
-  if (document.cookie === "") return <Navigate to={'/signin'} />
+  const role = localStorage.getItem('role')
+
+  if (document.cookie != "") {
+      return <Navigate to={'/signin'} />
+  } else if (!role || role === "Admin") {
+    return <Navigate to="/signin" />;
+  }
   
   return (
     <>
